@@ -2258,6 +2258,7 @@ static int qcow2_get_info(BlockDriverState *bs, BlockDriverInfo *bdi)
     bdi->can_write_zeroes_with_unmap = (s->qcow_version >= 3);
     bdi->cluster_size = s->cluster_size;
     bdi->vm_state_offset = qcow2_vm_state_offset(s);
+    bdi->is_dirty = s->incompatible_features & QCOW2_INCOMPAT_DIRTY;
     return 0;
 }
 
